@@ -8,9 +8,10 @@ const SearchParams = () => {
   const [animal, setAnimal] = useState("");
   const [breed, setBreed] = useState("");
   const [pets, setPets] = useState([]);
-  const [breeds,status]=useBreedList(animal);
+  const [breeds, ] = useBreedList(animal);
   useEffect(() => {
     requestPets();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   async function requestPets() {
     const res = await fetch(

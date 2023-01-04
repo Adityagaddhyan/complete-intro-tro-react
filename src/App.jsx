@@ -1,12 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import SearchParams from "./searchParams";
-
+import SearchParams from "./SearchParams";
 const App = () => {
-  const animals = [
-    { name: "Luna", animal: "Dog", breed: "Havanese" },
-    { name: "Pepper", animal: "Bird", breed: "Cockatiel" },
-  ];
   return (
     <div>
       <h1>Adopt me!</h1>
