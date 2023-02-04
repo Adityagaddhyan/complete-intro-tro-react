@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import useBreedList from "./useBreedList";
+import { useContext, useEffect, useState } from "react";
+import AdoptedPetContext from "./adoptedPageContext";
 import Results from "./Results";
+import useBreedList from "./useBreedList";
 const ANIMALS = ["Dog", "Cat", "Reptile", "Elephant", "Snake"];
 const SearchParams = () => {
   const [location, setLocation] = useState("Seattle");
@@ -8,6 +9,7 @@ const SearchParams = () => {
   const [breed, setBreed] = useState("");
   const [pets, setPets] = useState([]);
   const [breeds] = useBreedList(animal);
+  const [adoptedPet, _] = useContext(AdoptedPetContext);
   useEffect(() => {
     requestPets();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -27,6 +29,11 @@ const SearchParams = () => {
           e.preventDefault(), requestPets();
         }}
       >
+        {adoptedPet ? (
+          <div className="pet image-container">
+            <img src={adoptedPet.images[0]} alt="pet" />
+          </div>
+        ) : null}
         <label htmlFor="location">
           Location
           <input
